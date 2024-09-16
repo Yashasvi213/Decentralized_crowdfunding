@@ -3,12 +3,13 @@ import React, { Children } from "react";
 import Avatar from "@mui/material/Avatar";
 import { Progress } from "antd";
 function truncateDescription(description, limit) {
-  const words = description.split(" ");
-  if (words.length > limit) {
-    return words.slice(0, limit).join(" ") + " ...";
+  const char = description.split("");
+  if (char.length > limit) {
+    return char.slice(0, limit).join("") + "...";
   }
   return description;
 }
+
 export default function ExploreCard({
   name,
   description,
@@ -24,9 +25,9 @@ export default function ExploreCard({
         <div class="p-2 max-w-[300px] flex flex-col gap-2  rounded-lg ">
           <div className="flex justify-between">
             <div>
-              <h1 class="text-base font-semibold">{name}</h1>
+              <h1 class="text-base font-semibold">{truncateDescription(name, 15)}</h1>
               <p class="text-gray-500 text-md ">
-                {truncateDescription(description, 11)}
+                {truncateDescription(description, 20)}
               </p>
             </div>
             <Avatar src="https://i.pinimg.com/564x/28/48/e9/2848e9b67d266928df3665e4cb1293d4.jpg" />
